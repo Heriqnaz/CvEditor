@@ -18,12 +18,15 @@ router.get('/getCvById/:id',function(req,res){
 
 router.post('/saveCv', (req, res) => {
   console.log('rrrrrrrrrrr', req.body);
-
-  res.send({
-    type: 'POST',
-    name: req.body.name,
-    roll: req.body.roll
-  });
+  const cvId = req.body.id;
+  const query = req.body.data;
+  Cv.findByIdAndUpdate(cvId, query).then((cv) => {
+    console.log('gggggggggggggggg', cv);
+    res.send({
+      type: 'POST',
+      data: cv
+    });
+  })
 });
 
 module.exports = router;

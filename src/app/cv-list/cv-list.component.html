@@ -1,5 +1,20 @@
-<mat-list role="list">
-  <mat-list-item role="listitem" *ng>Item 1</mat-list-item>
-  <mat-list-item role="listitem">Item 2</mat-list-item>
-  <mat-list-item role="listitem">Item 3</mat-list-item>
-</mat-list>
+<div class="container">
+  <div class="list-section">
+    <mat-selection-list #cvLists [multiple]="false">
+      <mat-list-option
+        *ngFor="let list of cvList; trackBy: trackByFn"
+        (click)="onClickListItem(list._id)"
+        [selected]="selectedCvId === list._id"
+      >
+        {{list.name}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <div class="detail-section">
+    <app-details-page
+      [selectedCv]="selectedCv"
+      (saveDataEmmit)="saveData()"
+    >
+    </app-details-page>
+  </div>
+</div>

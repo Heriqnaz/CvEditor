@@ -7,7 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CvListComponent } from './cv-list/cv-list.component';
 import { DetailsPageComponent } from './details-page/details-page.component';
 import {HttpClientModule} from "@angular/common/http";
-import {MatListModule} from '@angular/material/list';
+import {MaterialExampleModule} from './material.module';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import {MatListModule} from '@angular/material/list';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatListModule
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialExampleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

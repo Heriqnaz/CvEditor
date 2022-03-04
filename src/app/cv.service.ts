@@ -15,7 +15,7 @@ export class CvService {
     return this.http.get(`${this.url}/cvs`);
   }
 
-  getCvById(id: number) {
+  getCvById(id: string) {
     return this.http.get(`${this.url}/getCvById/${id}`);
   }
 

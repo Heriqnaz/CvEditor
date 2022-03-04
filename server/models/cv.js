@@ -8,6 +8,21 @@ const CvSchema = new Schema({
   lastName: {
     type: String
   },
+  bDay: {
+    type: Date
+  },
+  phoneNumber: {
+    type: String
+  },
+  email: {
+    type: String
+  },
+  skills: {
+    type: Array
+  },
+  job: {
+    type: Array
+  }
 });
 
 
