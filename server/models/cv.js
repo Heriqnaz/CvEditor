@@ -8,9 +8,25 @@ const CvSchema = new Schema({
   lastName: {
     type: String
   },
+  bDay: {
+    type: Date
+  },
+  phoneNumber: {
+    type: String
+  },
+  email: {
+    type: String
+  },
+  skills: {
+    type: Array
+  },
+  job: {
+    type: Array
+  },
+  createdAt: {type: Date, default: Date.now},
 });
 
 
-const Student = mongoose.model('cv',CvSchema);
+const Cv = mongoose.model('cv',CvSchema);
 
-module.exports = Student;
+module.exports = Cv;

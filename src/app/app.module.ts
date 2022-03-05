@@ -7,20 +7,29 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CvListComponent } from './cv-list/cv-list.component';
 import { DetailsPageComponent } from './details-page/details-page.component';
 import {HttpClientModule} from "@angular/common/http";
-import {MatListModule} from '@angular/material/list';
+import {MaterialExampleModule} from './material.module';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { SkilSectionComponent } from './details-page/skil-section/skil-section.component';
+import { JobSectionComponent } from './details-page/job-section/job-section.component';
+import { PersonalInfoSectionComponent } from './details-page/personal-info-section/personal-info-section.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CvListComponent,
-    DetailsPageComponent
+    DetailsPageComponent,
+    SkilSectionComponent,
+    JobSectionComponent,
+    PersonalInfoSectionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatListModule
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialExampleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

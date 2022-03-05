@@ -7,7 +7,7 @@ import { map, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CvService {
-  private url = 'http://localhost:3000/api'
+  private url = 'http://localhost:3000/api/cv'
 
   constructor(private http: HttpClient) { }
 
@@ -15,7 +15,7 @@ export class CvService {
     return this.http.get(`${this.url}/cvs`);
   }
 
-  getCvById(id: number) {
+  getCvById(id: string) {
     return this.http.get(`${this.url}/getCvById/${id}`);
   }
 

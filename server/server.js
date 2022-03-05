@@ -2,7 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require("mongoose");
-const router = require('./router/api')
+const routerCv = require('./router/cv')
+const routerJob = require('./router/job')
+const routerSkill = require('./router/skill')
 const app = express();
 const port = 3000;
 
@@ -18,7 +20,9 @@ app.use(express.static('public'));
 app.use(express.json());
 
 
-app.use('/api', router);
+app.use('/api/cv', routerCv);
+app.use('/api/job', routerJob);
+app.use('/api/skill', routerSkill);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
