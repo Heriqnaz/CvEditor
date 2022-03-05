@@ -22,10 +22,11 @@ const CvSchema = new Schema({
   },
   job: {
     type: Array
-  }
+  },
+  createdAt: {type: Date, default: Date.now},
 });
 
 
-const Student = mongoose.model('cv',CvSchema);
+const Cv = mongoose.model('cv',CvSchema);
 
-module.exports = Student;
+module.exports = Cv;

@@ -1,0 +1,34 @@
+<form [formGroup]="formPersonalInfo">
+  <mat-card>
+    <mat-card-title>Personal Info</mat-card-title>
+    <div class="personal-info-section">
+      <ng-container  *ngFor="let plabel of labelsPersonalInfo">
+        <div *ngIf="plabel !== 'bDay'">
+          <mat-form-field appearance="fill">
+            <mat-label>{{plabel | uppercase}}</mat-label>
+            <input matInput [formControlName]="plabel">
+            <mat-icon matSuffix *ngIf="plabel === 'phoneNumber'">phone</mat-icon>
+          </mat-form-field>
+          <mat-icon (click)="editField(plabel)" *ngIf="!editMode || editingField !== plabel">edit</mat-icon>
+          <mat-icon (click)="saveChanges(plabel)" *ngIf="editMode && editingField === plabel">save</mat-icon>
+          <mat-icon  (click)="cancelChanges(plabel)" *ngIf="editMode && editingField === plabel">cancel</mat-icon>
+        </div>
+
+      </ng-container>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="bDay">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-icon (click)="editField('bDay')" *ngIf="!editMode || editingField !== 'bDay'">edit</mat-icon>
+        <mat-icon (click)="saveChanges('bDay')" *ngIf="editMode && editingField === 'bDay'">save</mat-icon>
+        <mat-icon  (click)="cancelChanges('bDay')" *ngIf="editMode && editingField === 'bDay'">cancel</mat-icon>
+      </div>
+
+    </div>
+  </mat-card>
+
+
+</form>
