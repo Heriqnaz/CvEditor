@@ -3,9 +3,12 @@ const Schema = mongoose.Schema;
 
 const SkillSchema = new Schema({
   cvId: {
-    type: [{ type: Schema.Types.ObjectId, ref: 'cv' }],
+    type: Schema.Types.ObjectId,
   },
   name: {
+    type: String
+  },
+  section: {
     type: String
   },
   createdAt: {type: Date, default: Date.now},

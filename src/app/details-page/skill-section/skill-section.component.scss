@@ -1,0 +1,13 @@
+.skills-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 5px;
+  mat-label {
+    margin-right: 5px;
+  }
+  button {
+    margin-left: 5px;
+  }
+}

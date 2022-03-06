@@ -1,0 +1,64 @@
+<mat-card>
+  <mat-card-title>Skills</mat-card-title>
+  <button mat-flat-button color="primary" (click)="addSkill()">Add Skill</button>
+  <form [formGroup]="dynamicForm">
+
+    <div *ngFor="let skill of skillFormGroups; let i = index" class="list-group list-group-flush">
+      <div class="list-group-item">
+        <div [formGroup]="skill" class="form-row">
+          <mat-form-field appearance="fill">
+            <mat-label>Select Skill Section</mat-label>
+            <mat-select formControlName="section">
+              <mat-option
+                *ngFor="let skillSection of skillSections"
+                [value]="skillSection">
+                {{skillSection}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Skill</mat-label>
+            <input matInput type="text" formControlName="name">
+          </mat-form-field>
+          <button mat-icon-button [disabled]="skillFormGroups[i].invalid" color="primary">
+            <mat-icon (click)="saveSkill(i)">save</mat-icon>
+          </button>
+          <button mat-icon-button color="primary">
+            <mat-icon (click)="cleanSkill(i)">cancel</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
+
+<div *ngIf="skills?.length && filteredSkills">
+  <div *ngFor="let label of skillSections">
+    <mat-label *ngIf="filteredSkills.hasOwnProperty(label) && filteredSkills[label]?.length">{{label}}</mat-label>
+    <div class="skills-list">
+      <ng-container  *ngFor="let skill of skills">
+        <div *ngIf="label === skill.section" class="skills-list-items">
+          <mat-chip-list aria-label="Fruit selection">
+            <mat-chip
+              (removed)="deleteSkill(skill._id)"
+            >
+              {{skill.name}}
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+
+      </ng-container>
+      <button
+        *ngIf="filteredSkills.hasOwnProperty(label) && filteredSkills[label]?.length"
+        mat-flat-button color="primary"
+        (click)="deleteAllSavedSkillsBySection(label)">
+        Delete All Section
+      </button>
+    </div>
+  </div>
+  <button mat-flat-button color="primary" (click)="deleteAllSavedSkills()">Delete All skills</button>
+</div>
+</mat-card>

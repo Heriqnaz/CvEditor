@@ -1,7 +1,16 @@
-<app-personal-info-section
-  [selectedCv]="selectedCv"
-  (saveDataEmmit)="saveData()"
-></app-personal-info-section>
+<div *ngIf="selectedCv">
+  <app-personal-info-section
+    [selectedCv]="selectedCv"
+    (saveDataEmmit)="saveData()"
+  ></app-personal-info-section>
 
-<app-skil-section></app-skil-section>
-<app-job-section></app-job-section>
+  <app-skill-section
+    [selectedCv]="selectedCv"
+    (saveDataEmmit)="saveData()"
+  ></app-skill-section>
+  <app-job-section
+    [selectedCv]="selectedCv"
+    (saveDataEmmit)="saveData()"
+  ></app-job-section>
+</div>
+

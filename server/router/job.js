@@ -14,7 +14,6 @@ router.get('/jobsByCvId/:cvId',(req,res) => {
 });
 
 router.post('/saveJob', (req, res) => {
-  console.log('rrrrrrrrrrr', req.body);
   const job = new Job(req.body);
   job.save().then((job) => {
     res.send({
@@ -27,7 +26,6 @@ router.post('/saveJob', (req, res) => {
 });
 
 router.put('/editJob', (req, res) => {
-  console.log('rrrrrrrrrrr', req.body);
   const id = req.body._id;
   Job.findByIdAndUpdate(id, req.body.data).then((job) => {
     res.send({
