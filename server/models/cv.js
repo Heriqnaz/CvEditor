@@ -17,12 +17,6 @@ const CvSchema = new Schema({
   email: {
     type: String
   },
-  skills: {
-    type: Array
-  },
-  job: {
-    type: Array
-  },
   createdAt: {type: Date, default: Date.now},
 });
 

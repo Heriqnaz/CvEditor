@@ -16,23 +16,13 @@ export class CvListComponent implements OnInit {
 
   ngOnInit(): void {
     this.cvService.getCvs().subscribe((res: any) => {
-      this.selectedCvId = res[0]._id;
-      this.getSelectedCvData();
-      this.cvList = res;
-    }, error => {
-      console.log('getCvsError', error);
-    })
+      if (res?.length) {
+        this.selectedCvId = res[0]._id;
+        this.getSelectedCvData();
+        this.cvList = res;
+      }
+    });
   }
-
-  getCvsList() {
-    this.cvService.getCvs().subscribe((res: any) => {
-      this.getSelectedCvData();
-      this.cvList = res;
-    }, error => {
-      console.log('getCvsError', error);
-    })
-  }
-
   trackByFn(id: number) {
     return id;
   }
@@ -44,7 +34,6 @@ export class CvListComponent implements OnInit {
 
   getSelectedCvData() {
     this.cvService.getCvById(this.selectedCvId).subscribe((cv: any) => {
-      console.log('dddddddddddddddddd', cv)
       this.selectedCv = cv;
     }, error => {
       console.log('err', error)
@@ -52,7 +41,7 @@ export class CvListComponent implements OnInit {
   }
 
   saveData() {
-       this.getCvsList();
+       this.getSelectedCvData();
   }
 
 }

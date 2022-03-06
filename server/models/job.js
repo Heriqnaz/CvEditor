@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const JobSchema = new Schema({
   cvId: {
-    type: [{ type: Schema.Types.ObjectId, ref: 'cv' }],
+    type: Schema.Types.ObjectId,
   },
   title: {
     type: String
@@ -14,7 +14,10 @@ const JobSchema = new Schema({
   details: {
     type: String
   },
-  timeRange: {
+  start: {
+    type: String
+  },
+  end: {
     type: String
   },
   createdAt: {type: Date, default: Date.now},

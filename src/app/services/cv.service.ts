@@ -20,7 +20,6 @@ export class CvService {
   }
 
   saveCv(cv: any) {
-    console.log('service', cv);
     return this.http.post(`${this.url}/saveCv/`, cv, { responseType: 'json' });
   }
 }

@@ -36,7 +36,6 @@ export class PersonalInfoSectionComponent implements OnInit {
           this.formPersonalInfo.controls[label].setValue('');
         }
       })
-      console.log('cvvvvvvvvvvvvvvvvvvvvv', this.selectedCv)
     }
   }
 
@@ -54,7 +53,6 @@ export class PersonalInfoSectionComponent implements OnInit {
       if (field === 'name') {
         this.saveDataEmmit.emit()
       }
-      console.log('ddddddddd', res);
     })
   }
 
@@ -80,7 +78,6 @@ export class PersonalInfoSectionComponent implements OnInit {
     this.editMode = false;
     this.disableFormControl(field);
     this.setForControl(field, this.editingFieldValue);
-    console.log('ggggggggggggggggg', this.formPersonalInfo.controls[field].value);
   }
   setForControl(name: string, value: any) {
     this.formPersonalInfo.controls[name].setValue(value);

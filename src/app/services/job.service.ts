@@ -7,7 +7,7 @@ import {Job} from "../models/job";
 @Injectable({
   providedIn: 'root'
 })
-export class CvService {
+export class JobService {
   private url = 'http://localhost:3000/api/job'
 
   constructor(private http: HttpClient) { }
@@ -17,7 +17,7 @@ export class CvService {
   }
 
   deleteJobById(id: string) {
-    return this.http.get(`${this.url}/deleteJobById/${id}`);
+    return this.http.delete(`${this.url}/deleteJobById/${id}`);
   }
 
   saveJob(job: Job) {

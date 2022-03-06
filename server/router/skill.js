@@ -14,10 +14,8 @@ router.get('/skillsByCvId/:cvId',(req,res) => {
 });
 
 router.post('/saveSkill', (req, res) => {
-  console.log('rrrrrrrrrrr', req.body);
   const skill = new Skill(req.body);
   skill.save().then((skill) => {
-    console.log('gggggggggggggggg', skill);
     res.send({
       type: 'POST',
       data: skill
@@ -32,6 +30,26 @@ router.delete('/deleteSkillById/:id', (req, res) => {
     res.send({
       type: 'DELETE',
       message: 'skill deleted'
+    });
+  }).catch((err) => {
+    console.log('Error:', err)
+  });
+});
+router.delete('/deleteAllSkillsByCvId/:cvId', (req, res) => {
+  Skill.deleteMany({cvId: req.params.cvId}).then((data) => {
+    res.send({
+      type: 'DELETE',
+      message: 'All skills deleted'
+    });
+  }).catch((err) => {
+    console.log('Error:', err)
+  });
+});
+router.delete('/deleteAllSavedSkillsBySection/:section/:cvId', (req, res) => {
+  Skill.deleteMany({section: req.params.section, cvId: req.params.cvId}).then((data) => {
+    res.send({
+      type: 'DELETE',
+      message: 'All skills deleted'
     });
   }).catch((err) => {
     console.log('Error:', err)

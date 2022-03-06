@@ -25,5 +25,5 @@ app.use('/api/job', routerJob);
 app.use('/api/skill', routerSkill);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`App listening on port ${port}`)
 })
