@@ -69,6 +69,7 @@ export class PersonalInfoSectionComponent implements OnInit {
   }
 
   saveChanges(field: string) {
+    if (!this.formPersonalInfo.controls[field].value) return;
     this.editMode = false;
     this.disableFormControl(field);
     this.saveCv(field);
