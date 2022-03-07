@@ -9,6 +9,7 @@ import {CvService} from "../../services/cv.service";
 })
 export class PersonalInfoSectionComponent implements OnInit {
   @Input() selectedCv: any;
+  @Input() selectedCvId: string;
   @Output() saveDataEmmit = new EventEmitter();
   labelsPersonalInfo = ['name', 'lastName', 'email', 'phoneNumber', 'bDay'];
   editMode = false;
@@ -35,6 +36,15 @@ export class PersonalInfoSectionComponent implements OnInit {
         } else {
           this.formPersonalInfo.controls[label].setValue('');
         }
+      })
+    }
+    if (changes?.['selectedCvId']?.currentValue && changes?.['selectedCvId']?.previousValue
+      && changes?.['selectedCvId']?.currentValue !== changes?.['selectedCvId']?.previousValue) {
+      this.editingField = '';
+      this.editMode = false;
+      this.editingFieldValue = '';
+      this.labelsPersonalInfo.forEach((item) => {
+          this.disableFormControl(item);
       })
     }
   }

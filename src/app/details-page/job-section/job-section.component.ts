@@ -11,6 +11,7 @@ import {Job} from "../../models/job";
 })
 export class JobSectionComponent implements OnInit, OnChanges {
   @Input() selectedCv: Cv;
+  @Input() selectedCvId: Cv;
   @Output() saveDataEmmit = new EventEmitter();
   dynamicJobForm: FormGroup;
   jobs: Job[] | undefined;
@@ -21,6 +22,10 @@ export class JobSectionComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes?.['selectedCv']?.currentValue && this.selectedCv) {
       this.jobs = this.selectedCv.jobs;
+    }
+    if (changes?.['selectedCvId']?.currentValue && changes?.['selectedCvId']?.previousValue
+      && changes?.['selectedCvId']?.currentValue !== changes?.['selectedCvId']?.previousValue) {
+      this.jobsArray.clear();
     }
   }
 
@@ -98,7 +103,6 @@ export class JobSectionComponent implements OnInit, OnChanges {
     this.jobService.deleteJobById(id).subscribe((res) => {
       this.saveDataEmmit.emit();
     })
-
   }
 
 }

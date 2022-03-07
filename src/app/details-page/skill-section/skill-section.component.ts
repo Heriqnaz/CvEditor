@@ -11,6 +11,7 @@ import {Skill} from "../../models/skill";
 })
 export class SkillSectionComponent implements OnInit, OnChanges {
   @Input() selectedCv: Cv;
+  @Input() selectedCvId: Cv;
   @Output() saveDataEmmit = new EventEmitter();
   skillSections = ['Backend', 'Frontend', 'Db', 'Mobile'];
   dynamicForm: FormGroup;
@@ -35,6 +36,9 @@ export class SkillSectionComponent implements OnInit, OnChanges {
           return skill.section === item;
         }))
       });
+    }
+    if (changes?.['selectedCvId']?.currentValue && changes?.['selectedCvId']?.previousValue && changes?.['selectedCvId']?.currentValue !== changes?.['selectedCvId']?.previousValue) {
+      this.skillsArray.clear();
     }
   }
 

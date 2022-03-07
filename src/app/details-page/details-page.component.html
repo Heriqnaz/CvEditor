@@ -1,15 +1,18 @@
 <div *ngIf="selectedCv" >
   <app-personal-info-section class="details-section"
     [selectedCv]="selectedCv"
+    [selectedCvId]="selectedCvId"
     (saveDataEmmit)="saveData()"
   ></app-personal-info-section>
 
   <app-skill-section class="details-section"
     [selectedCv]="selectedCv"
+    [selectedCvId]="selectedCvId"
     (saveDataEmmit)="saveData()"
   ></app-skill-section>
   <app-job-section class="details-section"
     [selectedCv]="selectedCv"
+    [selectedCvId]="selectedCvId"
     (saveDataEmmit)="saveData()"
   ></app-job-section>
 </div>
